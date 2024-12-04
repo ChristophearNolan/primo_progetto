@@ -12,3 +12,9 @@ def lista(request):
 
 def chiSiamo(request):
     return render(request,"chiSiamo.html")
+
+
+def index (request):
+    return render(request,"index.html")
+
+
