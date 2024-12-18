@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ol><h1>primo</h1></ol>
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} primo progetto| Lista {%endblock title%}
+
+{%block content%}
+<h1>lista</h1>
+<ol><h1>primo</h1></ol>
     <ol>secondo</ol>
     <ol>terzo</ol>
-</body>
-</html>
+{%endblock content%}

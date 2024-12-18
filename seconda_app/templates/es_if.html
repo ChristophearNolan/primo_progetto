@@ -1,5 +1,10 @@
-<body> 
-    <b>var1 = {{ var1 }}</b> <br/> 
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} primo progetto| es if{%endblock title%}
+
+{%block content%}
+<h1>es if</h1>
+<b>var1 = {{ var1 }}</b> <br/> 
     <b>var2 = {{ var2 }}</b> <br/> 
     <b>var3 = {{ var3 }}</b> <br/> 
     {% if var1 < var2 %} 
@@ -26,5 +31,7 @@
     {% if not var1 > var2 %} 
      <p><i>var1 non è maggiore di var2 </i></p> 
     {% endif %}
+{%endblock content%}
+
     
     

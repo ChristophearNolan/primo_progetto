@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends "base.html"%}
 
+{%block title%} {{block.super}} primo progetto| if else elif {%endblock title%}
 
-<body>
-    <b>var1= {{var1}}</b> <br/>
+{%block content%}
+<h1>if if_else_elif</h1>
+<b>var1= {{var1}}</b> <br/>
     <b>var2= {{var2}}</b> <br/>
     <b>var3= {{var3}}</b> <br/>
 
@@ -59,6 +55,4 @@
     {% else %}
         <p><i>var1 è uguale a var2</i></b>
     {% endif %}
-  
-</body>
-</html>
+{%endblock content%}

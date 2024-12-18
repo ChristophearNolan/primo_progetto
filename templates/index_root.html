@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prima progetto</title>
-</head>
-<body>
-    <li><a href="/admin">Pannello admin</a></li>
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} primo progetto| index root {%endblock title%}
+
+{%block content%}
+<h1>index root</h1>
+<li><a href="/admin">Pannello admin</a></li>
     <li><a href="{% url 'prima_app:index' %}">Prima app</a></li>
     <li><a href="{% url 'seconda_app:index2' %}">Seconda app</a></li>
-    
-</body>
-</html>
+
+{%endblock content%}
