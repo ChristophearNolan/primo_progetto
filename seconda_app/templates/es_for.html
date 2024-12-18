@@ -1,0 +1,61 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} primo progetto| es for {%endblock title%}
+
+{%block content%}
+<h1>es for</h1>
+cicla una sequenza usando <b>forloop.counter</b>
+    <br/>
+    {% for x in list2 %}
+        <i>{{forloop.counter}} </i>:{{ x }}<br>
+    {% endfor %}
+    <br/>
+    cicla una sequenza usando <b>forloop.counter0</b>
+    <br/>
+    {% for x in list2 %}
+        <i>{{forloop.counter0}}</i> : {{ x }}<br/>
+    {% endfor %}
+    <br/>
+    stampa il primo elemento della lista usando <b>forloop.first</b>:
+    <br/>
+    {% for x in list2 %}
+        {% if forloop.first %}
+            <i>il primo elemento</i> - {{ x }}
+        {%endif%}
+    {% endfor %}
+    <br/>
+    stampa l'ultimo elemento della lista usando <b>forloop.last</b>:
+    <br/>
+    {% for x in list2 %}
+        {% if forloop.last %}
+            <i>l'ultimo elemento</i> - {{ x }}
+        {%endif%}
+    {% endfor %}
+    <br/>
+    stampa il numero degli elementi non ancora ciclati usando <b>forloop.revcounter</b>
+    <br/>
+    {% for x in list2 %}
+        <i> numero degli elementi da dover ancora ciclare</i - {{forloop.revcouter}}><br/>
+        <i>elemento</i> - {{ x }}<br/>
+    {%endfor%}
+    <br/>
+    stampa il numero degli elementi non ancora ciclati usando <b>forloop.revcounter0</b>:
+    <br/>
+    {% for x in list2%}
+        <i>numero degli elementi da dover ancora ciclare</i> - {{forloop.revcounter0}}<br/>
+        <i>elemento</i> - {{ x }}<br/>
+    {%endfor%}
+    <br/>
+    stampa la sequenza al contrario usando<b>reserved</b>, attributo del tag <b>for</b>:
+    <br/>
+    {% for x in list2 reversed %}
+        <i>elemento</i> - {{ x }}<br/>
+    {%endfor%}
+     
+    <h2>Contenuto del dizionario: </h2>
+    <ul>
+        {% for key, value in my_dict.items %}
+            <i>{{ key }}: {{value}}</i>
+        {%endfor%}
+    </ul>
+{%endblock content%}

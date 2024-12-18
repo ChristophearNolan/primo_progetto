@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} primo progetto| index2 {%endblock title%}
+
+{%block content%}
+<h1>index</h1>
+<ol> 
+    <li><a href="{% url 'seconda_app:es_if'%}">es_if</a></li>
+    <li><a href="{% url 'seconda_app:if_else_elif'%}">if_else_elif</a></li>
+    <li><a href="{% url 'seconda_app:es_for'%}">es_for</a></li>
+    <li><a href="/">Index root</a></li>
+</ol> 
+{%endblock content%}

@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from primo_progetto.views import index_root
+from primo_progetto.views import index_root
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('prima_app/',include("prima_app.urls",namespace="prima_app")),
-    path('',index_root,name=index_root),
+    path('seconda_app/',include("seconda_app.urls",namespace="seconda_app")),
+    path('',index_root,name="index_root"),
 ]
