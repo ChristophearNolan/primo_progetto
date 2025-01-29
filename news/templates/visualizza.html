@@ -5,7 +5,7 @@
 {%block content%}
  <h4>Articoli:</h4>
     {% for articolo in articoli %}
-        <p><strong>Titolo: </strong>{{ articolo.titolo }}</p>
+        <p><strong>Titolo: </strong><a href="{% url 'news:art' articolo.pk %}">{{ articolo.titolo }}</a></p>
         <p><strong>Contenuto: </strong>{{ articolo.contenuto }}</p>
         <p><strong>Autore: </strong>{{ articolo.giornalista }}</p>
         <hr>

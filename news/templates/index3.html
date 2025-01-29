@@ -5,8 +5,12 @@
 {%block content%}
 <h1>index</h1>
 <ol>
-    <li><a href="{% url 'news:homep'%}">homepage</a></li>
-    <li><a href="{% url 'news:art' 1%}">articolo_detail</a></li>
+    <li><a href="{% url 'news:visualizza' %}">visualizza</a></li>
+
     <li><a href="/">Index root</a></li>
 </ol> 
 {%endblock content%}
+
+
+<!--    <li><a href="{% url 'news:lista_articoli' %}">lista_articoli</a></li>
+    <li><a href="{% url 'news:art' %}">articolo_detail</a></li>-->
