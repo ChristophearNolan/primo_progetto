@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{%block content%}
+    {% for corso in corsi %}
+        <p><strong>Titolo: </strong>
+        <a href="/corsi_formazione/corsi/{{corso.id}}">{{corso.titolo}}</a>
+        </p>
+        <p><strong>Contenuto: </strong>
+            {{ corso.descrizione}}
+        </p>
+         
+        <hr>
+    {% endfor %}
+    {%endblock%}
