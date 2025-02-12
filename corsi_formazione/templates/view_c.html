@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{%block content%}
+
+{% for corso in elenco_data_dopo %}
+<p>{{corso.titolo}}</p>
+<p>{{corso.descrzione}}</p>
+<p>{{corso.data_inizio}}</p>
+<hr>
+{% endfor %}
+<hr>
+   
+    {%endblock%}

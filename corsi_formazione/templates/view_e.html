@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{%block content%}
+
+{% for corso in corsi_termine %}
+<h1>{{corso.titolo}}</h1>
+<h3>{{corso.data_inizio}}</h3>
+<h3>{{corso.data_fine}}</h3>
+
+{% endfor %}
+<hr>
+   
+{%endblock%}
