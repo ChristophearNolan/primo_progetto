@@ -28,6 +28,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               prima app
             </a>
+
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'prima_app:welcome' %}">welcome</a>
               <a class="dropdown-item" href="{% url 'prima_app:lista' %}">lista</a>
@@ -50,10 +51,33 @@
               
             </div>
           </li>
+          {% if request.user.is_authenticated %}
+            <li class= "nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 {{ request.user.username }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-divider"></div>
+                <form id="logout-form" action = "{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button class="btn ft-power" type="submit">Logout</button>
+                </form>
+              </div>
+            </li>
+          {% else %}
+              <li class= "nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+          {%endif%}
+
+
+
         </ul>
        
       </div>
     </nav>
+
     <div class="container my-4">
       <!--servirà per inserire i contenuti della pagina-->
       {%block content%}
