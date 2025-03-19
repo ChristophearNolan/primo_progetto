@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'seconda_app',
     'news',
     'corsi_formazione',
+    'forms_app',
+    'crispy_bootstrap4',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'seconda_app/templates'),
                  os.path.join(BASE_DIR, 'news/templates'),
                  os.path.join(BASE_DIR, 'corsi_formazione/templates'),
+                 os.path.join(BASE_DIR, 'forms_app/templates'),
                  os.path.join(BASE_DIR, 'templates'),
                  ],
                  
@@ -141,3 +145,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
