@@ -1,6 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import FormContatto
+from .models import Contatto
+
+from django.shortcuts get_object_or_404,redirect
+
+from django.contrib.admin.views.decorators import staff_member_required
+
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -33,5 +40,47 @@ def contatti(request):
     context = {"form" : form}
 
     return render(request, "contatti.html",context)
+
+def lista_contatti(request):
+    contatti = Contatto.objects.all()
+    context = {
+        'contatti ' : contatti
+    }
+    return render (request, 'lista_contatti.html', context)
+
+@login_required(login_url="/accounts/login")
+def modifica_contatto (request, pk):
+
+    contatto = get_object_or_404(Contatto, id=pk)
+
+
+    if request.method == "GET": 
+
+        form = FormContatto (instance=contatto) #al construttore del form passo il contatto prelevato dal db
+
+    if request.method == "POST": #seconda chiamata post per modificare il contatto
+        form = FormContatto (request.POST, instance=contatto) #ora passo oltre al contatto prelevato dal db anche i dati modificati
+
+    if form.is_valid():
+        form.save()
+
+        return redirect('forms_app:lista_contatti') # url che reindirizza alla pagina lista_contatti.html
+
+    context={'form': form, 'contatto': contatto}
+
+    return render(request, 'modifica_contatto.html', context)
+
+@staff_member_required(login_url="/accounts/login") 
+
+def elimina_contatto (request, pk):
+    contatto = get_object_or_404(Contatto, id=pk)
+    if request.method == "POST": # vuol dire che l'utente ha inviato il form che conferma l'eliminazione
+        contatto.delete() #elimina il contatto dal database
+        return redirect('forms_app:lista-contatti')
+    
+    context= {'contatto contatto'}
+    return render(request, 'elimina_contatto.html',context)
+
+
 
     
