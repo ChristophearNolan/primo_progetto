@@ -1,9 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import FormContatto
 from .models import Contatto
 
-from django.shortcuts get_object_or_404,redirect
+from django.shortcuts import get_object_or_404,redirect
 
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -34,6 +34,7 @@ def contatti(request):
             
 
             return HttpResponse("<h1>Grazie per averci contatto</h1>")
+            
     else:
         form = FormContatto()
 
@@ -42,9 +43,11 @@ def contatti(request):
     return render(request, "contatti.html",context)
 
 def lista_contatti(request):
+    
     contatti = Contatto.objects.all()
+    print(contatti)
     context = {
-        'contatti ' : contatti
+        'contatti' : contatti
     }
     return render (request, 'lista_contatti.html', context)
 
@@ -70,15 +73,18 @@ def modifica_contatto (request, pk):
 
     return render(request, 'modifica_contatto.html', context)
 
-@staff_member_required(login_url="/accounts/login") 
 
+
+
+
+@staff_member_required(login_url="/accounts/login") 
 def elimina_contatto (request, pk):
     contatto = get_object_or_404(Contatto, id=pk)
     if request.method == "POST": # vuol dire che l'utente ha inviato il form che conferma l'eliminazione
         contatto.delete() #elimina il contatto dal database
-        return redirect('forms_app:lista-contatti')
+        return redirect('forms_app:lista_contatti')
     
-    context= {'contatto contatto'}
+    context= {'contatto': contatto}
     return render(request, 'elimina_contatto.html',context)
 
 
